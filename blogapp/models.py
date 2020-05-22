@@ -16,3 +16,6 @@ class Post(models.Model):
         self.published_date = timezone.now()
         self.save()
 
+    def hide(self):
+        self.published_date = None
+        self.save()

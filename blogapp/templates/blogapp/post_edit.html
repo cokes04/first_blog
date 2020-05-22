@@ -1,7 +1,7 @@
 {% extends 'blogapp/base.html' %}
 {%block content %}
 <h1>Edit Post</h1>
-<form method="post", action="">
+<form method="post">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit">제출</button>

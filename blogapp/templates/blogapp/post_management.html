@@ -1,0 +1,20 @@
+{% extends 'blogapp/base.html'%}
+{% block content %}
+    <br />
+    {%for post in posts %}
+        <div>
+            <form method="post" >{% csrf_token %}
+                <br /><a href="{% url 'blogapp:post_detail' pk=post.pk %}">{{post.title}}</a><br />
+                <p>작성일자 : {{post.create_date}}</p>
+                {% if post.published_date != None %}
+                    <p>게시일자 : {{post.published_date}}</p><br />
+                    <button name="management" value="private {{post.pk}}" > 비공개 </button>
+                {% else %}
+                    <br /><button name="management" value="posting {{post.pk}}" > 공개 </button>
+                {% endif %}
+                <button name="management" value="modify {{post.pk}}"  > 수정 </button>
+                <button name="management" value="delate {{post.pk}}"> 삭제 </button><br />
+            </form>
+        </div>
+    {% endfor %}
+{% endblock %}
